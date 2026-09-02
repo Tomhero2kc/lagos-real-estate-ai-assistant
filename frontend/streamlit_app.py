@@ -1,5 +1,5 @@
 import streamlit as st
-
+from backend.rent_predictor import predict_rent
 
 st.set_page_config(
     page_title="Lagos Real Estate Assistant",
@@ -63,11 +63,17 @@ with rent_tab:
         value=2,
     )
 
-    if st.button("Estimate Rent"):
-        st.info(
-            "The rent prediction model will be connected "
-            "in the next stage."
-        )
+if st.button("Estimate Rent"):
+    estimated_rent = predict_rent(
+        location,
+        property_type,
+        bedrooms,
+        bathrooms,
+    )
+
+    st.success(
+        f"Estimated annual rent: ₦{estimated_rent:,.0f}"
+    )
 
 
 with tenancy_tab:
