@@ -1,5 +1,6 @@
 import streamlit as st
 from backend.rent_predictor import predict_rent
+from backend.tenancy_assistant import answer_tenancy_question
 
 st.set_page_config(
     page_title="Lagos Real Estate Assistant",
@@ -84,14 +85,24 @@ with tenancy_tab:
         placeholder="For example: What should I check before paying rent?",
     )
 
-    if st.button("Ask Question"):
-        if question.strip():
-            st.info(
-                "The tenancy assistant will be connected "
-                "later in the project."
-            )
-        else:
-            st.warning("Please enter a question first.")
+if st.button("Ask Question"):
+
+
+
+
+    if question.strip():
+
+
+
+
+
+
+
+        
+        answer = answer_tenancy_question(question)
+        st.info(answer)
+    else:
+        st.warning("Please enter a question first.")
 
 
 st.caption(
